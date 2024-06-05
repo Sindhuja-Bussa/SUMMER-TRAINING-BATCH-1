@@ -107,16 +107,17 @@ class Linkedlist:
         else:
             print('odd')
     def sequence_count(self):
-        n=self.head
-        count=1
+        c=1
         max=0
+        n=self.head
         while(n.ref!=None):
             if(n.data+1==n.ref.data):
-                count=count+1
-                if(count>max):
-                    max=count
-                count=1
+                c=c+1
+                n=n.ref
+                if(max<c):
+                    max=c
             else:
+                c=1
                 n=n.ref
         print(max)
     def selection_sort(self):
@@ -193,6 +194,7 @@ LL.print()
 LL.middle_node()
 LL.possible_pairs()
 LL.leven_lodd()
+LL.sequence_count()
 LL.selection_sort()
 print()
 LL.bubble_sort()
