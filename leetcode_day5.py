@@ -1,9 +1,33 @@
-'''1221
+'''
+2325
+1221
 3120
 520
 3121''''
 
 
+str=input()
+str=str.replace(" ","")
+b=""
+for i in str:
+    if(i not in b):
+        b=b+i
+print(b)
+a=""
+for i in range(97,122+1):
+    a=a+chr(i)
+    i=i+1
+print(a)
+r=""
+index=0
+for i in message:
+    if i==" ":
+        r=r+i
+    else:
+        ind=b.index(i)
+        r=r+a[ind]
+return r
+    
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
         c=0
