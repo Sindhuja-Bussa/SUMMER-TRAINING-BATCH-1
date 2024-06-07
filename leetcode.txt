@@ -1,0 +1,57 @@
+Palindrome:(234)
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+            slow_p, fast_p = head, head
+            while (fast_p) and (fast_p.next):
+                slow_p, fast_p = slow_p.next, fast_p.next.next
+            prev, curr = None, slow_p
+            while(curr!=None):
+                t = curr.next
+                curr.next = prev
+                prev, curr = curr, t
+            while(prev!=None):
+                if prev.val != head.val:
+                    return False
+                prev, head = prev.next, head.next
+            return True
+
+DELETE BY VALUE(237)
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteNode(self, node):
+    	if node is None or node.next is None:
+        	return
+                                                                
+        # Copy the value of the next node to the current node
+         node.val = node.next.val
+                                                                                        
+        # Skip the next node by updating the current node's next pointer
+         node.next = node.next.next
+
+
+
+#missing number(268)
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        l=len(nums)
+        s=0
+        sum1=(l*(l+1))//2
+        for i in nums:
+            s=s+i
+        s1=sum1-s
+        return s1
+
+
+
+            
