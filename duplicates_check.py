@@ -1,4 +1,100 @@
-class node:
+'''l=list(map(int,input().split()))
+s1=[]
+s2=[]
+o=[]
+for i in l:
+    if i not in s1:
+        s1.append(i)
+    else:
+        s2.append(i)
+s3=[]
+s4=[]
+for i in s2:
+    if i not in s3:
+        s3.append(i)
+    else:
+        s4.append(i)
+print([s1,s3,s4])'''
+def duplicates(n,m):
+    a=[]
+    b=[]
+    if len(n)==0:
+        return m
+    else:
+        for i in n:
+            if i not in b:
+                b.append(i)
+            else:
+                a.append(i)
+    m.append(b)
+    return duplicates(a,m)
+n=list(map(int,input().split()))
+m=[]
+print(duplicates(n,m))
+'''l=list(map(int,input().split()))
+m=[]
+c=0
+while(c!=len(a)):
+    r=[]
+    for i in range(len(a)):
+        if(i not in a[i].isalpha()):
+            if(a[i] not in r):
+                c=c+1
+                r.append(a[i])
+                a[i]='a'
+m.append(r)'''
+
+
+
+'''l=list(map(int,input().split()))
+d={}
+m=[]
+c=0
+for i in l:
+    
+while(c!=len(a)):
+    r=[]
+    for i in range(len(a)):
+        if(i not in a[i].isalpha()):
+            if(a[i] not in r):
+                c=c+1
+                r.append(a[i])
+                a[i]='a'
+m.append(r)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''class node:
     def __init__(self,key):
         self.key=key
         self.lchild=None
@@ -51,7 +147,7 @@ class node:
         if self.rchild:
             self.rchild.postorder()
         print(self.key,end=" ")
-    def delete(self,data):
+    def delete(self, data):
         if self.key==None:
             print("Tree is empty")
             return
@@ -100,58 +196,33 @@ class node:
             self.rchild.max_r()
         elif self.rchild==None:
             print("Max Node Recursion:",self.key)
-    def sum(self):
-        total = self.sum_r()
-        print("Sum of all nodes:", total)
-    
-    def sum_r(self):
-        total=self.key
-        if self.lchild:
-            total=total+self.lchild.sum_r()
-        if self.rchild:
-            total=total+self.rchild.sum_r()
-        return total
-    def even_sum(self):
-        res = self.even_sum_r()
-        print("Sum of even nodes:",res)
-    def even_sum_r(self):
-        s=0
-        if self.key % 2 == 0 :
-            s=s+self.key
-        if self.lchild:
-            s += self.lchild.even_sum_r()
-        if self.rchild:
-            s += self.rchild.even_sum_r()
-        return s
-    def odd_sum(self):
-        res = self.odd_sum_r()
-        print("Sum of odd nodes:",res)
-    def odd_sum_r(self):
-        s=0
-        if self.key % 2 != 0 :
-            s=s+self.key
-        if self.lchild:
-            s += self.lchild.odd_sum_r()
-        if self.rchild:
-            s += self.rchild.odd_sum_r()
-        return s
-    def abs_diff_EvenOdd(self):
-        even_sum=self.even_sum_r()
-        odd_sum=self.odd_sum_r()
-        abs_diff=abs((even_sum) - (odd_sum))
-        print("Absolute Difference EvenOdd:",abs_diff)
-    def leaf_nodes(self):
-        if self.lchild==None and self.rchild==None:
-            print(self.key, end=" ")
-        if self.lchild:
-            self.lchild.leaf_nodes()
-        if self.rchild:
-            self.rchild.leaf_nodes()
-root=node(None)
-l=[10,5,2,1,6,8,9]
+    def leaf(self):
+        # base case
+
+        if not self.key:
+            return
+        # implement iterative preorder traversal and start
+        # storing leaf nodes.
+        st = []
+        st.append(self.key)
+        while len(st) > 0:
+            self.key = st.pop()
+     
+            # if node is leafnode, print its data
+            if not self.key.lchild and not self.key.rchild:
+                print(self.key.data, end=" ")
+     
+            if self.key.rchild:
+                st.append(self.key.rchild)
+            if self.key.lchild:
+                st.append(self.key.lchild)
+            
+root=node(10)
+l=[6,3,1,6,98,3,7]
 for i in l:
     root.insert(i)
 root.search(6)
+print()
 print("Pre Order Traversal")
 root.preorder()
 print()
@@ -161,17 +232,12 @@ print()
 print("Post Order Traversal")
 root.postorder()
 print()
-print("After Deleting 5")
-root.delete(5)
+print("After Deleting 10")
+root.delete(10)
 root.inorder()
 print()
 root.min()
 root.min_r()
 root.max()
 root.max_r()
-root.sum()
-root.even_sum()
-root.odd_sum()
-root.abs_diff_EvenOdd()
-print("Leaf Nodes:")
-root.leaf_nodes()
+root.sum()'''
