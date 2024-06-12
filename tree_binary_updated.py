@@ -41,7 +41,11 @@ class tree:
            # s = s+ self.sum(root.left,s)+ root.data +self.sum(root.right,s)
             #without passing s
             #without passing s
-            #return root.data + self.sum(root.left),self.sum(root.right)
+        #if root:
+            #return root.data + self.sum(root.left)+self.sum(root.right)
+        #else:
+            #return 0
+           
         return s   
     def even_sum(self,root,es):
         if root:
@@ -108,15 +112,13 @@ class tree:
             return self.s_leaf_nodes(root.left)+self.s_leaf_nodes(root.right)
     def search(self,root,x):
         if root==None:
-            print("Not Found")
-        if root:
-            if(root.data==x):
-                print("Found")
-                return
-            elif(root.data>x):
-                root.left=self.search(root.left,x)
-            else:
-                root.right=self.search(root.right,x)
+            return 0
+        if(root.data==x):
+          return 1
+        elif(root.data>x):
+          return self.search(root.left,x)
+        else:
+          return self.search(root.right,x)
     def depth(self,root,x,c):
         if root==None:
             return -1
@@ -125,15 +127,54 @@ class tree:
         if(root.data>x):
             return self.depth(root.left,x,c+1)
         else:
-            return self.depth(root.right,x,c+1)       
+            return self.depth(root.right,x,c+1)
+    def left_view(self,root,c,l):
+      if root==None:
+        return
+      if c not in l:
+        l.append(c)
+        print(root.data,end=" ") 
+      self.left_view(root.left,c+1,l)
+      self.left_view(root.right,c+1,l)
+
+    def right_view(self,root,c,l):
+      if root==None:
+        return
+      if c not in l:
+        l.append(c)
+        print(root.data,end=" ") 
+      self.right_view(root.right,c+1,l)
+      self.right_view(root.left,c+1,l)
+    def top_view(self,root,c,d):
+      if root==None:
+        return
+      if c not in d:
+        d[c]=root.data
+        #print(root.data)
+      self.top_view(root.left,c+1,d)
+      self.top_view(root.right,c-1,d)
+      return sorted(d.values())
+    def bottom_view(self,root,c,d):
+      if root==None:
+        return
+      if(c not in d and :
+        d[c]=root.data
+        #print(root.data)
+      self.top_view(root.left,c+1,d)
+      self.top_view(root.right,c-1,d)
+      return sorted(d.values())
+    
 t1=tree()
 #t1.root=node(10)
+t1.creat(t1.root,10)
+t1.creat(t1.root,5)
+t1.creat(t1.root,2)
+t1.creat(t1.root,7)
+t1.creat(t1.root,15)
 t1.creat(t1.root,11)
-t1.creat(t1.root,9)
-t1.creat(t1.root,8)
-t1.creat(t1.root,22)
+t1.creat(t1.root,20)
 t1.creat(t1.root,21)
-t1.creat(t1.root,90)
+t1.creat(t1.root,22)
 print("Preorder")
 t1.preorder(t1.root)
 print()
@@ -158,4 +199,15 @@ print("No.of Leaf Nodes:",t1.c_leaf_nodes(t1.root))
 print("Sum of Leaf Nodes:",t1.s_leaf_nodes(t1.root))
 t1.search(t1.root,23)
 print("Depth of Tree:",t1.depth(t1.root,8,0))
+print("Left View")
+t1.left_view(t1.root,0,[])
+print()
+print("Right View")
+t1.right_view(t1.root,0,[])
+print()
+print("Top View")
+print(t1.top_view(t1.root,0,{}))
+print()
+print("Bottom View")
+print(t1.top_view(t1.root,0,{}))
 
