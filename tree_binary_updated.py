@@ -87,10 +87,6 @@ class tree:
         if root==None:
             return -1
         return max(self.height(root.left),self.height(root.right))+1
-    def height(self,root):
-        if root==None:
-            return -1
-        return max(self.height(root.left),self.height(root.right))+1
     def balanced(self,root):
         return abs(self.height(root.left)-self.height(root.right)) <= 1
         if(balanced(self.root)):
